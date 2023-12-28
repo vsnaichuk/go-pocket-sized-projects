@@ -16,7 +16,6 @@ var phrasebook = map[language]string{
 	"vi": "Xin chào Thế Giới", // Vietnamese
 }
 
-// TODO: Add tests
 func main() {
 	var lang string
 	flag.StringVar(&lang, "lang", "en", "The required language, e.g. en, ur...")
