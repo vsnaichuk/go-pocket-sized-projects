@@ -8,6 +8,7 @@ func ExampleMain() {
 	// Hello world
 }
 
+// Table driven test
 func TestGreet(t *testing.T) {
 	type testCase struct {
 		lang language

@@ -11,12 +11,20 @@ type Logger struct {
 	output    io.Writer
 }
 
-// New returns you a logger, ready to log at the required threshold.
-func New(threshold Level, output io.Writer) *Logger {
-	return &Logger{
-		threshold: threshold,
-		output:    output,
-	}
+// New returns you a logger, ready to logf at the required threshold.
+// Give it a list of configuration functions to tune it at your will.
+// The default output is Stdout.
+func New(threshold Level, opts ...Option) *Logger {
+    lgr := &Logger{
+			threshold: threshold,
+			output: os.Stdout
+		}
+
+		for _, configFunc := range opts {
+        configFunc(lgr)
+		}
+
+		return lgr
 }
 
 // The signature is the same as the Printf method of the fmt standard package
